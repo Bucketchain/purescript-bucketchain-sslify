@@ -15,16 +15,18 @@ import Foreign.Object (lookup)
 import Node.HTTP (Request)
 
 -- | Force https options.
--- | `hostname` is redirect target hostname. If `Nothing`, `hostname` is detected from `:authority` header or `Host` header.
--- | `trustProtoHeader` is a option trusting `X-Forwarded-Proto` header to check that protocol is https.
+-- |
+-- | - `hostname` is redirect target hostname. If `Nothing`, `hostname` is detected from `:authority` header or `Host` header.
+-- | - `trustProtoHeader` is a option trusting `X-Forwarded-Proto` header to check that protocol is https.
 type Options =
   { hostname :: Maybe String
   , trustProtoHeader :: Boolean
   }
 
 -- | Default options.
--- | `hostname` is `Nothing`.
--- | `trustProtoHeader` is `false`.
+-- |
+-- | - `hostname` is `Nothing`.
+-- | - `trustProtoHeader` is `false`.
 defaultOptions :: Options
 defaultOptions =
   { hostname: Nothing
