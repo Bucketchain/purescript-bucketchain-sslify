@@ -42,7 +42,6 @@ testRedirect = do
   res <- request opts
   body <- convertToString $ C.responseAsStream res
   liftEffect do
-    assert $ body == "Moved Permanently"
     assert $ C.statusCode res == 301
     assert $ Just "https://localhost:3000/test?foo=1" == (lookup "location" $ C.responseHeaders res)
   where

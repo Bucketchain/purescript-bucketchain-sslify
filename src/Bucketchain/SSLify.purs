@@ -8,7 +8,6 @@ import Prelude
 
 import Bucketchain.Http (Http, toRequest, requestHeaders, requestURL, setHeader, setStatusCode)
 import Bucketchain.Middleware (Middleware)
-import Bucketchain.ResponseBody (body)
 import Control.Monad.Reader (ask)
 import Data.Maybe (Maybe(..), fromMaybe)
 import Effect.Class (liftEffect)
@@ -40,9 +39,8 @@ withForceHttps opts next = do
     then next
     else liftEffect do
       setHeader http "Location" $ "https://" <> host opts http <> requestURL http
-      setHeader http "Content-Type" "text/html; charset=utf-8"
       setStatusCode http 301
-      Just <$> body "Moved Permanently"
+      pure Nothing
 
 host :: Options -> Http -> String
 host { hostname } http =
