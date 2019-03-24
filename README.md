@@ -6,8 +6,16 @@ A force https middleware of [Bucketchain](https://github.com/Bucketchain/purescr
 
 ## Installation
 
+### Bower
+
 ```
-bower install purescript-bucketchain-sslify
+$ bower install purescript-bucketchain-sslify
+```
+
+### Spago
+
+```
+$ spago install bucketchain-sslify
 ```
 
 ## Documentation
